@@ -5,16 +5,14 @@
   import Projects from './components/Projects.svelte';
   import Skills from './components/Skills.svelte';
   import Contact from './components/Contact.svelte';
-  import Footer from './components/Footer.svelte';
   
 </script>
 
-<main class="overflow-x-hidden">
+<main class="font-jetbrains-mono bg-[#282c33]">
   <Navbar />
   <Hero />
-  <About />
   <Projects />
   <Skills />
+  <About />
   <Contact />
-  <Footer />
 </main>

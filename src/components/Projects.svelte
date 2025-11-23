@@ -1,11 +1,14 @@
 <script>
+    import { flip } from "svelte/animate";
+    import { fade, fly, slide } from "svelte/transition";
+
     let projects = [
         {
             id: 1,
             title: "ChertNodes",
             description: "Minecraft servers hosting",
             technologies: ["HTML", "SCSS", "Python", "Flask"],
-            icon: "🎮",
+            img:"public/images/project1.jpg",
             link: "#",
         },
         {
@@ -13,7 +16,7 @@
             title: "ProtectX",
             description: "Discord anti-crash bot",
             technologies: ["React", "Express", "Discord.js", "Node.js"],
-            icon: "🛡️",
+            img:"public/images/project2.jpg",
             link: "#",
         },
         {
@@ -21,7 +24,7 @@
             title: "Kahoot Answers Viewer",
             description: "Get answers to your kahoot quiz",
             technologies: ["CSS", "Express", "Node.js"],
-            icon: "💜",
+            img:"public/images/project3.jpg",
             link: "#",
         },
     ];
@@ -29,60 +32,54 @@
 
 <section
     id="projects"
-    class="py-20 px-4 bg-gradient-to-br from-[#1a1f3a] to-[#252b42] transition-colors duration-300"
+    class="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-12 lg:px-[171px] bg-[#282C33] "
 >
-    <div class="max-w-7xl mx-auto">
+    <div class="">
         <!-- Section Header -->
-        <div class="flex justify-between items-center mb-16">
-            <h2 class="text-4xl sm:text-5xl font-bold text-white">
-                #<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">projects</span>
-            </h2>
-            <div class="text-purple-400 hover:text-purple-300 text-lg font-semibold cursor-pointer">View all ---></div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4">
+            <div class="flex items-center gap-3 md:gap-6 w-full sm:w-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl text-[#C778DD] font-semibold whitespace-nowrap">
+                    #<span class="bg-white bg-clip-text text-transparent">projects</span>
+                </h2>
+                <div class="h-0.5 bg-[#C778DD] flex-grow sm:w-32 md:w-64 lg:w-[530px] my-3"></div>
+            </div>
+
+            <div class="text-white hover:text-[#ABB2BF] text-base md:text-lg cursor-pointer whitespace-nowrap">
+                View all → 
+            </div>
         </div>
 
         <!-- Projects Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
             {#each projects as project}
-                <div
-                    class="bg-[#252b42]/50 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 border border-purple-600/40"
-                >
-                    <!-- Project Icon -->
-                    <div
-                        class="p-12 text-center bg-gradient-to-br from-purple-600/30 to-pink-600/20"
-                    >
-                        <span class="text-6xl">{project.icon}</span>
+                <div class="border border-[#ABB2BF] bg-[#282C33] flex flex-col ">
+                    <!-- Image / Visual -->
+                    <div class="h-32 md:h-48 bg-[#282C33] flex items-center justify-center" >
+                        <img src={project.img} alt="">
                     </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3
-                            class="text-xl font-bold text-white mb-3"
-                        >
-                            {project.title}
-                        </h3>
-                        <p
-                            class="text-gray-300 mb-4 leading-relaxed"
-                        >
-                            {project.description}
-                        </p>
-
-                        <!-- Technologies -->
-                        <div class="flex flex-wrap gap-2 mb-4">
+                    
+                    <!-- Tech strip -->
+                    <div class="border-y border-[#ABB2BF] px-2 py-1 bg-[#282C33]">
+                        <div class="flex flex-wrap gap-1 text-sm md:text-base lg:text-lg text-[#ABB2BF]">
                             {#each project.technologies as tech}
-                                <span
-                                    class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-xs font-semibold border border-purple-600/40"
-                                >
-                                    {tech}
-                                </span>
+                                <span class="px-1 py-0.5">{tech}</span>
                             {/each}
                         </div>
-
-                        <!-- View Project Button -->
-                        <a
-                            href={project.link}
-                            class="inline-flex items-center text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-300"
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="px-1 mx-2">
+                        <h3 class="text-2xl  text-white my-2 ">{project.title}</h3>
+                        <p class="text-[#ABB2BF] text-sm md:text-base lg:text-lg">{project.description}</p>
+                    </div>
+                    
+                    <!-- Button -->
+                    <div class="p-3 md:p-4">
+                        <a 
+                            href={project.link} 
+                            class="inline-block px-5 md:px-5  py-1 border border-[#C778DD] text-white text-lg  hover:bg-[#C778DD]/20 transition" 
                         >
-                            View Project →
+                            Live →
                         </a>
                     </div>
                 </div>

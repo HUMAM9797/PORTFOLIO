@@ -28,35 +28,30 @@
     ];
 </script>
 
-<section id="skills" class="py-20 px-4 bg-gradient-to-br from-[#252b42] to-[#1a1f3a] transition-colors duration-300">
-    <div class="max-w-7xl mx-auto">
+<section id="skills" class="py-12 md:py-16 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-[171px] bg-[#282C33]">
+    <div class="">
         <!-- Section Header -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
-                #<span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">skills</span>
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-4xl  text-[#C778DD] whitespace-nowrap">
+                #<span class="text-white">skills</span>
             </h2>
+            <div class="h-0.5 bg-[#C778DD] w-24 sm:w-32 md:w-48 lg:w-[220px] my-5"></div>
+        </div>
+
+        <div class="absolute">
+            <img src="public/images/Group 36.png" alt="">
         </div>
 
         <!-- Skills Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-auto max-w-xl items-start">
             {#each skillCategories as category}
-                <div
-                    class="bg-[#252b42]/60 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-purple-600/30"
-                >
-                    <!-- Category Header -->
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-3xl">{category.icon}</span>
-                        <h3 class="text-lg font-bold text-white">
-                            {category.category}
-                        </h3>
+                <div class="border border-[#ABB2BF]">
+                    <div class="px-3 md:px-4 py-2 border-b border-[#ABB2BF]">
+                        <h3 class="text-base md:text-lg text-white">{category.category}</h3>
                     </div>
-
-                    <!-- Skills Tags -->
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-1 p-2 text">
                         {#each category.skills as skill}
-                            <span class="px-3 py-1 bg-[#1a1f3a] text-gray-300 rounded text-sm border border-purple-600/20 hover:border-purple-600/50 transition-colors duration-300">
-                                {skill}
-                            </span>
+                            <span class="text-sm md:text-base lg:text-lg text-[#ABB2BF]">{skill}</span>
                         {/each}
                     </div>
                 </div>

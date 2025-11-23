@@ -4,17 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{svelte,js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
+  
   theme: {
     extend: {
       colors: {
-        primary: '#a855f7',
-        secondary: '#ec4899',
-        dark: {
-          bg: '#1a1f3a',
-          card: '#252b42',
-          border: '#3d4563',
-        },
+        primary: '#282C33',
+        secondary: '#282C33',
       },
       fontFamily: {
         'jetbrains-mono': ['jetbrains-mono', 'monospace'],

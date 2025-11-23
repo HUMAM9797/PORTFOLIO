@@ -1,8 +1,10 @@
 <script>
     let currentSection = "home";
+    let mobileMenuOpen = false;
 
     function scrollTo(section) {
         currentSection = section;
+        mobileMenuOpen = false;
         const element = document.getElementById(section);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
@@ -10,31 +12,85 @@
     }
 </script>
 
-<nav class="fixed top-0 w-full h-14 bg-[#282C33] z-50 ">
-    <div class="">
-        <div class="flex justify-around items-center h-20 ">
+<nav class=" fixed top-0 w-full bg-[#282C33] z-50" >
+    <div class="px-4 sm:px-6 md:px-12 lg:px-[171px]">
+        <div class="flex items-center justify-between h-14">
             <!-- Logo -->
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-slack-icon lucide-slack"><rect width="3" height="8" x="13" y="2" rx="1.5"/><path d="M19 8.5V10h1.5A1.5 1.5 0 1 0 19 8.5"/><rect width="3" height="8" x="8" y="14" rx="1.5"/><path d="M5 15.5V14H3.5A1.5 1.5 0 1 0 5 15.5"/><rect width="8" height="3" x="14" y="13" rx="1.5"/><path d="M15.5 19H14v1.5a1.5 1.5 0 1 0 1.5-1.5"/><rect width="8" height="3" x="2" y="8" rx="1.5"/><path d="M8.5 5H10V3.5A1.5 1.5 0 1 0 8.5 5"/></svg>
-            <button 
+            <button
                 on:click={() => scrollTo("home")}
-                class="mr-20 text-xl font-bold text-white"
+                class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white truncate"
+                aria-label="Go to home"
             >
-                Elias
+                Humam Haidar Mohsin
             </button>
 
-            <!-- Navigation -->
-            <ul class="hidden md:flex items-center gap-8">
-                {#each ["home", "about", "projects", "skills", "contacts"] as section}
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex items-center gap-4 lg:gap-8">
+                {#each ["home", "projects", "skills", "about", "contact"] as section}
                     <li>
                         <button
                             on:click={() => scrollTo(section)}
-                            class="relative text-[#C778DD] font-medium  {currentSection === section ? 'text-white' : ''}"
+                            class={"relative font-medium text-sm lg:text-base " +
+                                (currentSection === section
+                                    ? "text-white"
+                                    : "text-[#C778DD]")}
                         >
                             <span class="text-[#C778DD]">#</span>{section}
                         </button>
                     </li>
                 {/each}
             </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+                on:click={() => (mobileMenuOpen = !mobileMenuOpen)}
+                class="md:hidden text-[#ABB2BF] p-2"
+                aria-label="Toggle menu"
+            >
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    {#if mobileMenuOpen}
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    {:else}
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    {/if}
+                </svg>
+            </button>
         </div>
+
+        <!-- Mobile Menu -->
+        {#if mobileMenuOpen}
+            <div class="md:hidden py-4 border-t border-[#ABB2BF]/50">
+                <ul class="flex flex-col gap-4">
+                    {#each ["home", "projects", "skills", "about", "contact"] as section}
+                        <li>
+                            <button
+                                on:click={() => scrollTo(section)}
+                                class={"w-full text-left font-medium " +
+                                    (currentSection === section
+                                        ? "text-white"
+                                        : "text-[#C778DD]")}
+                            >
+                                <span class="text-[#C778DD]">#</span>{section}
+                            </button>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+        {/if}
     </div>
 </nav>

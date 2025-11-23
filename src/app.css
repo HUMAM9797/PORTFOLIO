@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #282C33;
-}
+:global(body) {
+        overflow-x: hidden;
+        background: #282c33;
+    }
